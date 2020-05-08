@@ -1,24 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Counter } from './components/Counter/Counter';
+import { Mirror } from './components/Counter/CounterMirror';
+import CounterProvider from './contexts/CounterContext';
+import { Todo } from './components/Todo/Todo';
+import TodoProvider from './contexts/TodoContext';
+import TodoMirror from './components/Todo/TodoMirror';
+
+const container = {
+  margin: 20
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={container}>
+      <CounterProvider>
+        <h1>Counter</h1>
+        <div>
+          <Counter />
+          <Mirror />
+        </div>
+      </CounterProvider>
+
+      <hr />
+
+      <TodoProvider>
+        <h1>To do</h1>
+        <Todo />
+        <TodoMirror />
+      </TodoProvider>
+      <hr />
     </div>
   );
 }
